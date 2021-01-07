@@ -12,11 +12,11 @@ exports.registerUser = catchWrapper (async (req, res, next) => {
   
   const user = new User({...inputValidation})
   await user.save ({ new: true }, (err) => {
-  if (err)  res.status(400).send('User detail could not be registered: Check server connection')})
-  res.status(200).send({user})
+  if (err)  next (res.status(400).send('User detail could not be registered: Check server connection'))})
+  next( res.status(200).send({user}))
 })
 
 exports.getUser = catchWrapper ( async (req, res, next)=> {
   const users = await User.find().select('-__v -password')
-  res.status(200).send(response(true, "Users Data retrieved successfully", users))
+  next(res.status(200).send(response(true, "Users Data retrieved successfully", users)))
 })
