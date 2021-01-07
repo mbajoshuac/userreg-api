@@ -9,6 +9,9 @@ const response = require('./utils/response')
 app.use(express.json())
 
 //routeshandler
+app.use('/', (req, res, next) => {
+  res.send(200).send(`Welcome to User Registration API by CodeAngelic`)
+})
 app.use('/user', userRoute)
 
 app.use('*',(req,res) => {

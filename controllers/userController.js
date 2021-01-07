@@ -4,7 +4,7 @@ const {regValidation} = require ('../middlewares/validation')
 const response = require ('../utils/response')
 
 
-exports.registerUser = catchWrapper (async (req, res) => {
+exports.registerUser = catchWrapper (async (req, res, next) => {
   const inputValidation = await regValidation.validateAsync(req.body)
   //check if user exist
   const checkUser = User.findOne({email: inputValidation.email})
@@ -16,7 +16,7 @@ exports.registerUser = catchWrapper (async (req, res) => {
   res.status(200).send({user})
 })
 
-exports.getUser = catchWrapper ( async (req, res)=> {
+exports.getUser = catchWrapper ( async (req, res, next)=> {
   const users = await User.find().select('-__v -password')
   res.status(200).send(response(true, "Users Data retrieved successfully", users))
 })
