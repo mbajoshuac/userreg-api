@@ -10,7 +10,7 @@ app.use(express.json())
 
 //routeshandler
 app.use('/', (req, res, next) => {
-  res.send(200).send(`Welcome to User Registration API by CodeAngelic`)
+  res.send(200).send({message: `Welcome to User Registration API by CodeAngelic`})
 })
 app.use('/user', userRoute)
 
