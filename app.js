@@ -5,14 +5,15 @@ const response = require('./utils/response')
 
 
 //Middlewares
-
 app.use(express.json())
 
-//routeshandler
+//routeshandler for user
+app.use('/user', userRoute) 
+
+//routerhandler for 127.0.0.1
 app.use('/', (req, res, next) => {
-  res.send(200).send({message: `Welcome to User Registration API by CodeAngelic`})
+  res.status(200).send({message: `Welcome to User Registration API by CodeAngelic`})
 })
-app.use('/user', userRoute)
 
 app.use('*',(req,res) => {
   res.status(200).send({response: `You accessed a route that doesn't exist`})

@@ -3,7 +3,7 @@ const {registerUser, getUser} = require('../controllers/userController')
 
 
 router.route('/register').post(registerUser)
-router.route('/users').get(getUser)
+router.route('/all').get(getUser)
 
 
 module.exports = router

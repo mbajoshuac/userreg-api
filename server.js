@@ -15,8 +15,8 @@ mongoose.connect(process.env.DATABASE, {
     console.log(`Something went wrong`)
 });
 
-app.listen(port, () => {
+app.listen (process.env.port, () => {
     if (process.env.NODE_ENV !== ('development' && 'test')) {
-        console.log(`Running on ${process.env.NODE_ENV} environment `)
+        console.log(`Running on ${process.env.NODE_ENV} environment on port:${process.env.port} `)
     }
 })
