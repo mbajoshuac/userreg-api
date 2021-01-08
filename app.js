@@ -2,7 +2,10 @@ const express = require('express')
 const app = express();
 const userRoute = require('./routes/userRoute')
 const response = require('./utils/response')
+const cors = require('cors')
 
+// connecting react and node
+app.use(cors())
 
 //Middlewares
 app.use(express.json())
